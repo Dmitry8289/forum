@@ -5,7 +5,7 @@ from django.db import models
 
 class Profile(models.Model):
     photo = models.ImageField(upload_to='profile/photo/%Y/%m/%d')
-    username = models.CharField(max_length=16)
+    username = models.CharField(max_length=16, unique=True)
     description = models.TextField()
     signature = models.TextField()
     profile_color = models.CharField(validators=[MinLengthValidator(8), RegexValidator(r'^[0-9a-f]{8}$')], max_length=8)
